@@ -33,65 +33,90 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-black-deep text-white">
+      {/* Breaking News Ticker */}
+      <div className="fixed top-24 left-0 right-0 z-40 bg-black/60 backdrop-blur-3xl border-y border-white/5 py-3 overflow-hidden">
+        <div className="flex whitespace-nowrap animate-ticker">
+          {[
+            "UPSC Civil Services 2024 Prelims Results Out!",
+            "SSC CGL Tier-II Exam Dates Announced",
+            "New IBPS PO Vacancies Released",
+            "Admit Cards for JEE Main Session 2 Available Now",
+            "Registration Open for CAT 2024",
+            "GATE 2024 Answer Key Released",
+            "RBI Grade B Notification Expected Soon"
+          ].map((news, i) => (
+            <div key={i} className="flex items-center gap-6 mx-12">
+              <div className="w-2 h-2 rounded-full bg-gold shadow-[0_0_10px_rgba(212,175,55,1)] animate-pulse"></div>
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/60 hover:text-gold transition-colors cursor-pointer">{news}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-slate-50">
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-600/10 via-transparent to-indigo-600/10 -z-10"></div>
+      <section className="relative pt-56 pb-32 lg:pt-80 lg:pb-48 overflow-hidden">
+        {/* Dynamic Background Elements */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[700px] bg-gold/5 blur-[180px] rounded-full -z-10 animate-pulse"></div>
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gold/5 blur-[120px] rounded-full -z-10"></div>
+        
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto space-y-8">
+          <div className="text-center max-w-5xl mx-auto space-y-12">
              <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-blue-100/50 text-blue-600 font-black text-xs uppercase tracking-[0.2em] mb-4"
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="inline-flex items-center gap-3 px-8 py-3 rounded-full bg-white/5 text-gold border border-white/10 font-black text-[10px] uppercase tracking-[0.5em] mb-4 backdrop-blur-xl shadow-2xl"
              >
-                <TrendingUp className="w-4 h-4" />
+                <div className="w-2 h-2 rounded-full bg-gold animate-ping"></div>
                 Join 5 Million+ Aspirants
              </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-5xl md:text-7xl font-black text-gray-900 leading-[1.05] tracking-tight"
+              transition={{ delay: 0.2, duration: 0.8 }}
+              className="text-6xl md:text-8xl font-black leading-[1.1] tracking-tighter font-display"
             >
-              Master Your Path To <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-                Success
+              Master Your <br />
+              <span className="gold-gradient-text italic tracking-tighter">
+                Successful Path
               </span>
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="text-xl text-gray-500 font-medium max-w-2xl mx-auto leading-relaxed"
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="text-xl md:text-2xl text-white/30 font-medium max-w-3xl mx-auto leading-relaxed font-sans"
             >
-              One-stop portal for all government, competitive and professional examinations in India. Real-time updates, syllabus, and preparation guides.
+              The definitive intelligence repository for India's most prestigious competitive examinations. Precision data, real-time mandates, and elite preparation assets.
             </motion.p>
 
             <motion.form
               onSubmit={handleSearch}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="relative max-w-2xl mx-auto mt-12 bg-white p-2.5 rounded-3xl shadow-2xl shadow-blue-500/10 border border-gray-100 flex items-center gap-2 group focus-within:ring-4 focus-within:ring-blue-100 transition-all duration-300"
+              transition={{ delay: 0.4, duration: 1 }}
+              className="relative max-w-4xl mx-auto mt-20 bg-white/5 backdrop-blur-3xl p-3 rounded-[32px] border border-white/10 flex flex-col md:flex-row items-center gap-4 group focus-within:border-gold/40 transition-all duration-700 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.6)] animate-float"
             >
-              <div className="pl-6 text-gray-400 group-focus-within:text-blue-600">
-                <Search className="w-6 h-6" />
+              <div className="absolute -inset-1 bg-gold/10 blur-2xl rounded-[40px] opacity-0 group-focus-within:opacity-100 transition-opacity duration-1000 -z-10"></div>
+              
+              <div className="flex items-center flex-grow w-full px-6">
+                <Search className="w-7 h-7 text-white/20 group-focus-within:text-gold transition-colors duration-500" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Analyze premium exams, domains, or authorities..."
+                  className="w-full py-6 px-6 bg-transparent border-none focus:outline-none text-white font-medium placeholder:text-white/10 text-lg"
+                />
               </div>
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search exams, categories, or conducting body..."
-                className="flex-grow py-4 px-4 bg-transparent border-none focus:outline-none text-gray-900 font-semibold placeholder:text-gray-400"
-              />
               <button
                 type="submit"
-                className="bg-blue-600 text-white px-10 py-4 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-blue-700 transition-all shadow-xl shadow-blue-600/20 active:scale-95"
+                className="btn-gold w-full md:w-auto px-16 py-6 text-sm"
               >
-                Search
+                INITIALIZE SEARCH
               </button>
             </motion.form>
 
@@ -99,16 +124,16 @@ const Home: React.FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
-              className="flex flex-wrap justify-center gap-3 mt-8"
+              className="flex flex-wrap justify-center gap-4 mt-16"
             >
-              <span className="text-sm font-bold text-gray-400 uppercase tracking-widest mr-2 self-center">Popular:</span>
-              {['UPSC', 'SSC CGL', 'IBPS PO', 'JEE Main', 'NEET', 'CAT'].map((tag) => (
+              <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.5em] mr-6 self-center">Operational Domains:</span>
+              {['UPSC', 'SSC CGL', 'IBPS PO', 'JEE MAIN', 'NEET', 'CAT'].map((tag) => (
                 <button
                   key={tag}
                   onClick={() => setSearchQuery(tag)}
-                  className="px-5 py-2 rounded-xl bg-white/50 text-gray-600 font-bold text-xs border border-gray-200 hover:border-blue-600 hover:text-blue-600 transition-all hover:bg-white"
+                  className="px-8 py-3.5 rounded-2xl bg-white/5 text-white/40 font-black text-[10px] uppercase tracking-[0.3em] border border-white/5 hover:border-gold hover:text-gold transition-all duration-500 hover:bg-gold/5 group"
                 >
-                  {tag}
+                  <span className="group-hover:scale-110 inline-block transition-transform">{tag}</span>
                 </button>
               ))}
             </motion.div>
@@ -117,18 +142,19 @@ const Home: React.FC = () => {
       </section>
 
       {/* Categories Section */}
-      <section className="py-24 bg-white">
+      <section className="py-32 bg-black-charcoal relative">
+        <div className="absolute inset-0 bg-gold/[0.02] -z-10"></div>
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-            <div>
-              <span className="text-blue-600 font-black text-xs uppercase tracking-[0.3em] mb-3 block">Diverse Domains</span>
-              <h2 className="text-4xl font-black text-gray-900">Explore by Category</h2>
+          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+            <div className="space-y-4">
+              <span className="text-gold font-black text-xs uppercase tracking-[0.4em] block">Elite Disciplines</span>
+              <h2 className="text-5xl font-black text-white">Global Categories</h2>
             </div>
             <button 
               onClick={() => navigate('/exams')}
-              className="flex items-center gap-2 text-blue-600 font-black text-sm uppercase tracking-widest group"
+              className="flex items-center gap-3 text-white/50 font-black text-xs uppercase tracking-[0.3em] group hover:text-gold transition-colors"
             >
-              View All Categories <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-all" />
+              Explore Full Catalog <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-all" />
             </button>
           </div>
 
@@ -141,11 +167,11 @@ const Home: React.FC = () => {
           >
             {catsLoading ? (
                [...Array(10)].map((_, i) => (
-                 <div key={i} className="h-40 bg-gray-50 rounded-2xl animate-pulse"></div>
+                 <div key={i} className="h-48 bg-white/5 rounded-3xl animate-pulse border border-white/10"></div>
                ))
             ) : (
                 categories.slice(0, 10).map((cat) => (
-                  <motion.div key={cat.id} variants={itemVariants}>
+                  <motion.div key={cat.id} variants={itemVariants} className="antigravity-card p-1 rounded-3xl">
                     <CategoryCard
                       category={cat.name as any}
                       count={cat.examCount}
@@ -159,16 +185,17 @@ const Home: React.FC = () => {
       </section>
 
       {/* Featured Exams Section */}
-      <section className="py-24 bg-slate-50/50">
+      <section className="py-32 relative overflow-hidden">
+        <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-gold/5 blur-[120px] rounded-full -z-10"></div>
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex justify-between items-end mb-16">
-            <div>
-              <span className="text-indigo-600 font-black text-xs uppercase tracking-[0.3em] mb-3 block">Top Opportunities</span>
-              <h2 className="text-4xl font-black text-gray-900">Featured Examinations</h2>
+          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+            <div className="space-y-4">
+              <span className="text-gold font-black text-xs uppercase tracking-[0.4em] block">Prestigious Opportunities</span>
+              <h2 className="text-5xl font-black text-white">Premier Examinations</h2>
             </div>
             <button
                onClick={() => navigate('/exams')}
-               className="bg-white px-8 py-3.5 rounded-2xl border border-gray-200 text-gray-900 font-black text-sm uppercase tracking-widest hover:border-blue-600 hover:text-blue-600 transition-all shadow-sm"
+               className="btn-outline-gold"
             >
               Browse All
             </button>
@@ -179,15 +206,15 @@ const Home: React.FC = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
           >
             {examsLoading ? (
                [...Array(3)].map((_, i) => (
-                 <div key={i} className="h-[450px] bg-white rounded-[40px] animate-pulse"></div>
+                 <div key={i} className="h-[500px] bg-white/5 rounded-[40px] animate-pulse border border-white/10"></div>
                ))
             ) : (
                 featuredExams.map((exam) => (
-                  <motion.div key={exam.id} variants={itemVariants}>
+                  <motion.div key={exam.id} variants={itemVariants} className="antigravity-card rounded-[40px]">
                     <ExamCard exam={exam} />
                   </motion.div>
                 ))
@@ -197,30 +224,30 @@ const Home: React.FC = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-32 bg-white relative overflow-hidden">
+      <section className="py-40 bg-black-deep relative overflow-hidden">
+        <div className="absolute right-0 bottom-0 w-[600px] h-[600px] bg-gold/[0.03] blur-[150px] rounded-full -z-10"></div>
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
+          <div className="grid lg:grid-cols-2 gap-24 items-center">
             <div className="relative">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-blue-600/10 blur-[100px] rounded-full"></div>
-              <div className="space-y-10 relative">
-                <div>
-                   <span className="text-blue-600 font-black text-xs uppercase tracking-[0.3em] mb-3 block">Why ExamPath?</span>
-                   <h2 className="text-4xl md:text-5xl font-black text-gray-900 leading-tight">Your Complete Career <br /> Navigation System</h2>
+              <div className="space-y-12 relative">
+                <div className="space-y-6">
+                   <span className="text-gold font-black text-xs uppercase tracking-[0.4em] block">The Gold Standard</span>
+                   <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-6 tracking-tight font-sans">Operational <span className="gold-gradient-text tracking-tight">Roadmap</span></h1>
                 </div>
 
-                <div className="grid gap-8">
+                <div className="grid gap-10">
                   {[
-                    { icon: ShieldCheck, title: 'Verified Accuracy', desc: 'Every data point is cross-verified with official government notifications.' },
-                    { icon: Zap, title: 'Instant Notifications', desc: 'Be the first to know about release dates, vacancies and results.' },
-                    { icon: Globe, title: 'Universal Coverage', desc: 'From state police to international certifications, find everything here.' },
+                    { icon: ShieldCheck, title: 'Elite Veracity', desc: 'Sourced from strictly official government gazettes and notifications.' },
+                    { icon: Zap, title: 'Velocity Updates', desc: 'Ultra-low latency notification system for real-time exam intelligence.' },
+                    { icon: Globe, title: 'Universal Domain', desc: 'Exhaustive coverage from local state boards to international fellowships.' },
                   ].map((feature, i) => (
-                    <div key={i} className="flex gap-6 items-start group">
-                      <div className="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
-                        <feature.icon className="w-6 h-6" />
+                    <div key={i} className="flex gap-8 items-start group">
+                      <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold group-hover:text-black group-hover:border-gold transition-all duration-500 shadow-xl group-hover:shadow-gold/20">
+                        <feature.icon className="w-7 h-7" />
                       </div>
-                      <div>
-                        <h4 className="font-black text-xl text-gray-900 mb-2">{feature.title}</h4>
-                        <p className="text-gray-500 font-medium leading-relaxed">{feature.desc}</p>
+                      <div className="space-y-2">
+                        <h4 className="font-black text-2xl text-white group-hover:text-gold transition-colors">{feature.title}</h4>
+                        <p className="text-white/40 font-medium leading-relaxed text-lg">{feature.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -228,24 +255,25 @@ const Home: React.FC = () => {
               </div>
             </div>
             <div className="relative group">
-               <div className="absolute inset-0 bg-blue-600/5 rounded-3xl transform rotate-3 scale-105 -z-10 group-hover:rotate-0 transition-transform"></div>
-               <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-2xl relative">
-                  <div className="grid grid-cols-2 gap-4">
-                     <div className="p-6 rounded-2xl bg-blue-50/50 space-y-2">
-                        <span className="text-3xl font-black text-blue-600">30k+</span>
-                        <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">Active Exams</p>
+               <div className="absolute inset-0 bg-gold/5 rounded-[40px] transform rotate-3 scale-105 -z-10 group-hover:rotate-0 transition-all duration-700"></div>
+               <div className="premium-glass p-12 rounded-[40px] border border-white/10 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-40 h-40 bg-gold/10 blur-3xl rounded-full"></div>
+                  <div className="grid grid-cols-2 gap-8 relative">
+                     <div className="p-8 rounded-3xl bg-white/5 border border-white/10 space-y-3 hover:border-gold/30 transition-all">
+                        <span className="text-4xl font-black gold-gradient-text italic">30k+</span>
+                        <p className="text-[10px] font-bold text-white/30 uppercase tracking-[0.2em]">Active Portals</p>
                      </div>
-                     <div className="p-6 rounded-2xl bg-indigo-50/50 space-y-2 translate-y-8">
-                        <span className="text-3xl font-black text-indigo-600">5M+</span>
-                        <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">Aspirants</p>
+                     <div className="p-8 rounded-3xl bg-white/5 border border-white/10 space-y-3 translate-y-12 hover:border-gold/30 transition-all">
+                        <span className="text-4xl font-black gold-gradient-text italic">5M+</span>
+                        <p className="text-[10px] font-bold text-white/30 uppercase tracking-[0.2em]">Aspirants</p>
                      </div>
-                     <div className="p-6 rounded-2xl bg-teal-50/50 space-y-2">
-                        <span className="text-3xl font-black text-teal-600">200+</span>
-                        <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">Categories</p>
+                     <div className="p-8 rounded-3xl bg-white/5 border border-white/10 space-y-3 hover:border-gold/30 transition-all">
+                        <span className="text-4xl font-black gold-gradient-text italic">200+</span>
+                        <p className="text-[10px] font-bold text-white/30 uppercase tracking-[0.2em]">Domains</p>
                      </div>
-                     <div className="p-6 rounded-2xl bg-rose-50/50 space-y-2 translate-y-8">
-                        <span className="text-3xl font-black text-rose-600">24/7</span>
-                        <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">Live Updates</p>
+                     <div className="p-8 rounded-3xl bg-white/5 border border-white/10 space-y-3 translate-y-12 hover:border-gold/30 transition-all">
+                        <span className="text-4xl font-black gold-gradient-text italic">24/7</span>
+                        <p className="text-[10px] font-bold text-white/30 uppercase tracking-[0.2em]">Live Intelligence</p>
                      </div>
                   </div>
                </div>

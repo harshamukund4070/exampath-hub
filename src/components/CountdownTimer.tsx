@@ -16,23 +16,25 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
     return () => clearInterval(timer);
   }, [targetDate]);
 
-  if (timeLeft.days === 0 && timeLeft.hours === 0 && timeLeft.minutes === 0 && timeLeft.seconds === 0) {
-    return <span className="text-red-500 font-semibold italic">Exam In Progress/Ended</span>;
+  const isExpired = timeLeft.days === 0 && timeLeft.hours === 0 && timeLeft.minutes === 0 && timeLeft.seconds === 0;
+
+  if (isExpired) {
+    return <span className="text-gold font-black italic uppercase tracking-widest text-[10px] animate-pulse">Mandate Concluded</span>;
   }
 
   return (
     <div className="flex gap-4">
       {[
-        { label: 'Days', value: timeLeft.days },
-        { label: 'Hours', value: timeLeft.hours },
-        { label: 'Mins', value: timeLeft.minutes },
-        { label: 'Secs', value: timeLeft.seconds },
+        { label: 'D', value: timeLeft.days },
+        { label: 'H', value: timeLeft.hours },
+        { label: 'M', value: timeLeft.minutes },
+        { label: 'S', value: timeLeft.seconds },
       ].map((item) => (
-        <div key={item.label} className="flex flex-col items-center">
-          <div className="bg-blue-600 text-white font-bold p-3 rounded-lg min-w-[60px] text-center text-xl shadow-md transform transition hover:scale-105">
+        <div key={item.label} className="flex flex-col items-center gap-2">
+          <div className="bg-gold text-black font-black p-3 rounded-xl min-w-[50px] text-center text-lg lg:text-xl shadow-[0_0_20px_rgba(212,175,55,0.2)] transform transition hover:scale-105 border border-gold/50 font-display italic">
             {item.value.toString().padStart(2, '0')}
           </div>
-          <span className="text-xs uppercase tracking-wider text-gray-500 mt-1 font-medium">{item.label}</span>
+          <span className="text-[8px] font-black uppercase tracking-[0.3em] text-white/30">{item.label}</span>
         </div>
       ))}
     </div>

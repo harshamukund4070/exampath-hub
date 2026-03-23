@@ -15,9 +15,21 @@ export default {
     extend: {
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
-        display: ["Plus Jakarta Sans", "Inter", "system-ui", "sans-serif"],
+        display: ["'Cormorant Garamond'", "serif"],
+        body: ["Inter", "sans-serif"],
       },
       colors: {
+        gold: {
+          DEFAULT: "#D4AF37",
+          light: "#F9E498",
+          dark: "#AA8C2C",
+        },
+        black: {
+          DEFAULT: "#000000",
+          deep: "#0A0A0A",
+          charcoal: "#111111",
+          card: "#1A1A1A",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -96,12 +108,22 @@ export default {
           from: { opacity: "0" },
           to: { opacity: "1" },
         },
+        "float": {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-15px)" },
+        },
+        "glow": {
+          "0%, 100%": { boxShadow: "0 0 5px rgba(212, 175, 55, 0.2)" },
+          "50%": { boxShadow: "0 0 20px rgba(212, 175, 55, 0.4)" },
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in-up": "fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards",
         "fade-in": "fade-in 0.5s ease-out forwards",
+        "float": "float 5s ease-in-out infinite",
+        "glow": "glow 3s ease-in-out infinite",
       },
     },
   },

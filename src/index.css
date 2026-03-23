@@ -1,21 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,700;1,500;1,700&family=Inter:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100..900;1,100..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --primary: 221 83% 53%; /* #2563eb */
-    --background: 210 40% 98%; /* #f8fafc */
-    --card: 0 0% 100%;
+    --black-deep: #0D0E12;
+    --black-charcoal: #15171C;
+    --black-card: #1A1D24;
+    --gold: #D4AF37;
+    --gold-light: #F9E498;
+    --gold-glow: rgba(212, 175, 55, 0.4);
+    
+    --background: 220 20% 6%;
+    --foreground: 210 20% 98%;
   }
 
   * {
-    @apply border-gray-200 transition-colors duration-200;
+    @apply border-white/10 transition-all duration-300;
   }
 
   body {
-    @apply bg-slate-50 text-gray-900 font-sans antialiased selection:bg-blue-600 selection:text-white overflow-x-hidden;
+    @apply bg-black-deep text-white/90 selection:bg-gold selection:text-black antialiased overflow-x-hidden;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
   }
 
   /* Custom Scrollbar */
@@ -25,11 +37,11 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-slate-100;
+    @apply bg-black-deep;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-slate-300 rounded-full hover:bg-slate-400 transition-colors;
+    @apply bg-gold/30 rounded-full hover:bg-gold/50 transition-colors;
   }
 }
 
@@ -38,31 +50,42 @@
     @apply max-w-7xl mx-auto;
   }
 
-  .glass-card {
-    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl;
+  .premium-glass {
+    @apply bg-black-card/40 backdrop-blur-xl border border-white/10 shadow-2xl;
   }
 
-  .btn-primary {
-    @apply bg-blue-600 text-white font-black text-sm uppercase tracking-widest px-8 py-4 rounded-2xl shadow-xl shadow-blue-600/20 hover:bg-blue-700 hover:shadow-blue-600/30 transition-all active:scale-95;
+  .gold-gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-gold via-gold-light to-gold-dark;
+  }
+
+  .btn-gold {
+    @apply bg-gold text-black font-black text-sm uppercase tracking-[0.2em] px-8 py-4 rounded-xl shadow-lg shadow-gold/20 hover:bg-gold-light hover:shadow-gold/40 hover:-translate-y-1 transition-all active:scale-95;
+  }
+
+  .btn-outline-gold {
+    @apply border-2 border-gold/50 text-gold font-black text-sm uppercase tracking-[0.2em] px-8 py-4 rounded-xl hover:bg-gold hover:text-black hover:border-gold transition-all active:scale-95;
   }
 
   .section-title {
-    @apply text-4xl font-black text-gray-900 leading-tight tracking-tight mb-4;
+    @apply text-5xl font-black text-white leading-tight tracking-tight mb-4;
   }
 
-  .badge {
-    @apply px-4 py-1.5 rounded-full font-black text-[10px] uppercase tracking-widest border;
+  .badge-gold {
+    @apply px-4 py-1.5 rounded-full font-black text-[10px] uppercase tracking-widest border border-gold/30 text-gold bg-gold/5;
+  }
+
+  .antigravity-card {
+    @apply premium-glass hover:shadow-gold/20 hover:border-gold/30 hover:-translate-y-3 transition-all duration-500;
   }
 }
 
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
+@keyframes ticker {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
 }
 
-.animate-float {
-  animation: float 4s ease-in-out infinite;
+.animate-ticker {
+  animation: ticker 30s linear infinite;
 }
 
 /* Page Transitions */
@@ -83,13 +106,11 @@
   transition: opacity 300ms;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

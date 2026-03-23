@@ -27,35 +27,26 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ category, count, isSelected
     }
   };
 
-  const colors = {
-    'Central': 'from-blue-50 to-indigo-50 text-blue-600 border-blue-100 ring-blue-500/10',
-    'State': 'from-orange-50 to-amber-50 text-orange-600 border-orange-100 ring-orange-500/10',
-    'Banking': 'from-green-50 to-emerald-50 text-green-600 border-green-100 ring-green-500/10',
-    'Defence': 'from-red-50 to-rose-50 text-red-600 border-red-100 ring-red-500/10',
-    'Engineering': 'from-sky-50 to-cyan-50 text-sky-600 border-sky-100 ring-sky-500/10',
-    'Medical': 'from-rose-50 to-pink-50 text-rose-600 border-rose-100 ring-rose-500/10',
-    'MBA': 'from-purple-50 to-fuchsia-50 text-purple-600 border-purple-100 ring-purple-500/10',
-    'Law': 'from-slate-50 to-gray-50 text-slate-600 border-slate-100 ring-slate-500/10',
-    'Teaching': 'from-yellow-50 to-orange-50 text-yellow-600 border-yellow-100 ring-yellow-500/10',
-    'Professional': 'from-teal-50 to-emerald-50 text-teal-600 border-teal-100 ring-teal-500/10',
-  };
-
   return (
     <motion.button
-      whileHover={{ y: -4 }}
-      whileTap={{ scale: 0.98 }}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
       onClick={onClick}
       className={cn(
-        "relative flex flex-col items-center p-6 border-2 rounded-2xl transition-all duration-300 w-full bg-gradient-to-br",
-        colors[category],
-        isSelected ? "ring-4 border-current" : "bg-white hover:border-current/30 shadow-sm hover:shadow-md"
+        "group relative flex flex-col items-center justify-center p-8 rounded-3xl transition-all duration-500 w-full h-full",
+        "bg-white/5 border border-white/10 hover:border-gold/50 hover:bg-gold/5",
+        isSelected && "ring-2 ring-gold border-gold bg-gold/10"
       )}
     >
-      <div className={cn("mb-4 transform transition-transform group-hover:scale-110")}>
+      <div className="absolute inset-0 bg-gradient-to-br from-gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-3xl overflow-hidden"></div>
+      <div className={cn(
+        "mb-6 p-4 rounded-2xl bg-white/5 border border-white/10 text-gold group-hover:text-black group-hover:bg-gold transition-all duration-500 transform group-hover:rotate-[10deg]",
+        isSelected && "bg-gold text-black"
+      )}>
         {getIcon()}
       </div>
-      <h3 className="font-bold text-gray-900 text-lg mb-1">{category}</h3>
-      <p className="text-sm font-medium opacity-70">{count} Exams Available</p>
+      <h3 className="font-black text-white text-xl mb-2 font-display">{category}</h3>
+      <p className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">{count} PORTALS</p>
     </motion.button>
   );
 };

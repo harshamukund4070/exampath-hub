@@ -12,43 +12,44 @@ export default function CategoryCards() {
   const topCategories = getTopCategories();
 
   return (
-    <section className="container-app py-16">
+    <section className="container mx-auto px-4 lg:px-8 py-24">
       <motion.div
-        initial={{ opacity: 0, y: 16, filter: "blur(4px)" }}
-        whileInView={{ opacity: 1, y: 0, filter: "blur(0)" }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="mb-16 text-center"
       >
-        <h2 className="font-display font-bold text-2xl sm:text-3xl text-foreground text-center">
-          Browse by Category
+        <span className="text-gold font-black text-[10px] uppercase tracking-[0.5em] mb-4 block">Specialized Sectors</span>
+        <h2 className="font-display font-black text-4xl sm:text-6xl text-white tracking-tighter">
+          Operational <span className="gold-gradient-text italic">Database</span>
         </h2>
-        <p className="mt-2 text-muted-foreground text-center text-sm">
-          Find exams organized by domain and level
-        </p>
       </motion.div>
 
-      <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
         {topCategories.map((cat, i) => {
           const Icon = iconMap[cat.icon] || Landmark;
           const examCount = getExamsByCategory(cat.id).length;
           return (
             <motion.div
               key={cat.id}
-              initial={{ opacity: 0, y: 16, filter: "blur(4px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0)" }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: i * 0.07, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.05 }}
             >
               <button
                 onClick={() => navigate(`/exams?category=${cat.id}`)}
-                className="category-card w-full flex flex-col items-center text-center gap-3"
+                className="group relative w-full h-full flex flex-col items-center text-center gap-6 p-10 rounded-[40px] bg-black-charcoal border border-white/5 hover:border-gold/30 hover:shadow-[0_0_40px_rgba(212,175,55,0.1)] transition-all duration-700 overflow-hidden"
               >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <Icon className="w-6 h-6 text-primary" />
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                
+                <div className="w-20 h-20 rounded-2xl bg-black-deep flex items-center justify-center border border-white/10 group-hover:scale-110 transition-transform duration-700 group-hover:border-gold/20 group-hover:bg-gold/5">
+                  <Icon className="w-10 h-10 text-gold shadow-gold-glow" />
                 </div>
                 <div>
-                  <p className="font-semibold text-sm text-foreground">{cat.name}</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">{examCount} exams</p>
+                  <p className="font-black text-white text-lg font-display uppercase tracking-widest leading-tight group-hover:text-gold transition-colors">{cat.name}</p>
+                  <p className="text-[9px] font-black text-white/20 mt-3 uppercase tracking-[0.3em] group-hover:text-gold/40 transition-colors">{examCount} Mandates</p>
                 </div>
               </button>
             </motion.div>
