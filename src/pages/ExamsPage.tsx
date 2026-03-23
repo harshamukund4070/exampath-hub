@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Search, Filter, X, ChevronDown, SlidersHorizontal, BookOpen, Clock, Users } from 'lucide-react';
-import { exams, categories as dataCategories } from '../data/exams';
+import { useExams, useCategories } from '../hooks/useSupabaseData';
 import ExamCard from '../components/ExamCard';
 import { ExamLevel, ExamStatus, Eligibility } from '../types';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -10,6 +10,8 @@ import { cn } from '../utils/helpers';
 const ExamsPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const { exams, loading: examsLoading } = useExams();
+  const { categories: dataCategories, loading: catsLoading } = useCategories();
 
   // Filters state
   const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
@@ -37,7 +39,7 @@ const ExamsPage: React.FC = () => {
 
       return matchesSearch && matchesCategory && matchesLevel && matchesStatus && matchesEligibility;
     });
-  }, [searchQuery, categoryFilter, levelFilter, statusFilter, eligibilityFilter]);
+  }, [exams, searchQuery, categoryFilter, levelFilter, statusFilter, eligibilityFilter]);
 
   const levels: ExamLevel[] = ['National', 'State', 'University', 'International'];
   const statuses: ExamStatus[] = ['upcoming', 'ongoing', 'completed'];
@@ -173,32 +175,42 @@ const ExamsPage: React.FC = () => {
                 </div>
              </div>
 
-             {filteredExams.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-                   <AnimatePresence mode='popLayout'>
-                     {filteredExams.map((exam) => (
-                        <motion.div
-                           layout
-                           key={exam.id}
-                           initial={{ opacity: 0, scale: 0.9 }}
-                           animate={{ opacity: 1, scale: 1 }}
-                           exit={{ opacity: 0, scale: 0.9 }}
-                           transition={{ duration: 0.2 }}
-                        >
-                           <ExamCard exam={exam} />
-                        </motion.div>
-                     ))}
-                   </AnimatePresence>
-                </div>
+             {examsLoading ? (
+               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                  {[...Array(6)].map((_, i) => (
+                    <div key={i} className="h-[450px] bg-white rounded-[40px] animate-pulse"></div>
+                  ))}
+               </div>
              ) : (
-                <div className="bg-white rounded-3xl p-20 text-center border-2 border-dashed border-gray-100">
-                   <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-400">
-                      <Search className="w-10 h-10" />
-                   </div>
-                   <h3 className="text-2xl font-black text-gray-900 mb-2">No exams match your search</h3>
-                   <p className="text-gray-500 font-medium mb-10 max-w-sm mx-auto">Try adjusting your filters or search query to find what you're looking for.</p>
-                   <button onClick={clearFilters} className="bg-blue-600 text-white px-10 py-4 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-blue-700 transition-all shadow-xl shadow-blue-600/20 active:scale-95">Clear All Filters</button>
-                </div>
+                <>
+                  {filteredExams.length > 0 ? (
+                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                      <AnimatePresence mode='popLayout'>
+                        {filteredExams.map((exam) => (
+                            <motion.div
+                              layout
+                              key={exam.id}
+                              initial={{ opacity: 0, scale: 0.9 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              exit={{ opacity: 0, scale: 0.9 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <ExamCard exam={exam} />
+                            </motion.div>
+                        ))}
+                      </AnimatePresence>
+                    </div>
+                  ) : (
+                    <div className="bg-white rounded-3xl p-20 text-center border-2 border-dashed border-gray-100">
+                      <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6 text-blue-400">
+                          <Search className="w-10 h-10" />
+                      </div>
+                      <h3 className="text-2xl font-black text-gray-900 mb-2">No exams match your search</h3>
+                      <p className="text-gray-500 font-medium mb-10 max-w-sm mx-auto">Try adjusting your filters or search query to find what you're looking for.</p>
+                      <button onClick={clearFilters} className="bg-blue-600 text-white px-10 py-4 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-blue-700 transition-all shadow-xl shadow-blue-600/20 active:scale-95">Clear All Filters</button>
+                    </div>
+                  )}
+                </>
              )}
           </main>
         </div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Search, TrendingUp, ArrowRight, ShieldCheck, Zap, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { exams, categories } from '../data/exams';
+import { useExams, useCategories } from '../hooks/useSupabaseData';
 import ExamCard from '../components/ExamCard';
 import CategoryCard from '../components/CategoryCard';
 import { useNavigate } from 'react-router-dom';
@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom';
 const Home: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
+  const { exams, loading: examsLoading } = useExams();
+  const { categories, loading: catsLoading } = useCategories();
 
   const featuredExams = exams.slice(0, 6);
 
@@ -122,7 +124,10 @@ const Home: React.FC = () => {
               <span className="text-blue-600 font-black text-xs uppercase tracking-[0.3em] mb-3 block">Diverse Domains</span>
               <h2 className="text-4xl font-black text-gray-900">Explore by Category</h2>
             </div>
-            <button className="flex items-center gap-2 text-blue-600 font-black text-sm uppercase tracking-widest group">
+            <button 
+              onClick={() => navigate('/exams')}
+              className="flex items-center gap-2 text-blue-600 font-black text-sm uppercase tracking-widest group"
+            >
               View All Categories <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-all" />
             </button>
           </div>
@@ -134,15 +139,21 @@ const Home: React.FC = () => {
             viewport={{ once: true }}
             className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
           >
-            {categories.slice(0, 10).map((cat) => (
-              <motion.div key={cat.id} variants={itemVariants}>
-                <CategoryCard
-                  category={cat.name as any}
-                  count={cat.examCount}
-                  onClick={() => navigate(`/exams?category=${cat.id}`)}
-                />
-              </motion.div>
-            ))}
+            {catsLoading ? (
+               [...Array(10)].map((_, i) => (
+                 <div key={i} className="h-40 bg-gray-50 rounded-2xl animate-pulse"></div>
+               ))
+            ) : (
+                categories.slice(0, 10).map((cat) => (
+                  <motion.div key={cat.id} variants={itemVariants}>
+                    <CategoryCard
+                      category={cat.name as any}
+                      count={cat.examCount}
+                      onClick={() => navigate(`/exams?category=${cat.id}`)}
+                    />
+                  </motion.div>
+                ))
+            )}
           </motion.div>
         </div>
       </section>
@@ -170,11 +181,17 @@ const Home: React.FC = () => {
             viewport={{ once: true }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {featuredExams.map((exam) => (
-              <motion.div key={exam.id} variants={itemVariants}>
-                <ExamCard exam={exam} />
-              </motion.div>
-            ))}
+            {examsLoading ? (
+               [...Array(3)].map((_, i) => (
+                 <div key={i} className="h-[450px] bg-white rounded-[40px] animate-pulse"></div>
+               ))
+            ) : (
+                featuredExams.map((exam) => (
+                  <motion.div key={exam.id} variants={itemVariants}>
+                    <ExamCard exam={exam} />
+                  </motion.div>
+                ))
+            )}
           </motion.div>
         </div>
       </section>

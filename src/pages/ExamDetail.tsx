@@ -4,9 +4,9 @@ import {
   Calendar, Briefcase, MapPin, Globe, Award, Info, BookOpen, Clock,
   ArrowRight, Bookmark, Share2, Bell, CheckCircle2, AlertCircle, ChevronDown,
   ChevronUp, Download, ExternalLink, Play, FileText, LayoutList, GraduationCap, Users, ShieldCheck,
-  Zap, TrendingUp, BarChart3, Building2, HelpCircle
+  Zap, TrendingUp, BarChart3, Building2, HelpCircle, Shield
 } from 'lucide-react';
-import { exams, categories } from '../data/exams';
+import { useExam, useCategories, useExams } from '../hooks/useSupabaseData';
 import { Exam } from '../types';
 import CountdownTimer from '../components/CountdownTimer';
 import { cn } from '../utils/helpers';
@@ -15,22 +15,20 @@ import { motion, AnimatePresence } from 'framer-motion';
 const ExamDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
-  const [exam, setExam] = useState<Exam | null>(null);
+  const { exam, loading } = useExam(slug);
+  const { categories } = useCategories();
+  const { exams: allExams } = useExams();
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [activeTab, setActiveTab] = useState<'info' | 'syllabus' | 'pattern' | 'resources'>('info');
   const [openAccordions, setOpenAccordions] = useState<number[]>([0]);
 
   useEffect(() => {
-    const foundExam = exams.find(e => e.slug === slug);
-    if (foundExam) {
-      setExam(foundExam);
+    if (exam) {
       const bookmarks = JSON.parse(localStorage.getItem('bookmarks') || '[]');
-      setIsBookmarked(bookmarks.includes(foundExam.id));
+      setIsBookmarked(bookmarks.includes(exam.id));
       window.scrollTo(0, 0);
-    } else {
-      navigate('/exams');
     }
-  }, [slug, navigate]);
+  }, [exam]);
 
   const toggleBookmark = () => {
     if (!exam) return;
@@ -54,20 +52,31 @@ const ExamDetail: React.FC = () => {
   const category = useMemo(() => {
     if (!exam) return null;
     return categories.find(c => c.id === exam.categoryId);
-  }, [exam]);
+  }, [exam, categories]);
 
   const relatedExams = useMemo(() => {
-    if (!exam) return [];
-    return exams.filter(e => exam.relatedExamIds.includes(e.id));
-  }, [exam]);
+    if (!exam || !allExams.length) return [];
+    return allExams.filter(e => exam.relatedExamIds.includes(e.id));
+  }, [exam, allExams]);
 
-  if (!exam) return null;
+  if (loading) return (
+    <div className="min-h-screen flex items-center justify-center bg-slate-50">
+      <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+    </div>
+  );
+
+  if (!exam) return (
+    <div className="min-h-screen pt-32 text-center bg-slate-50">
+      <h2 className="text-2xl font-black text-gray-900">Exam not found</h2>
+      <Link to="/exams" className="text-blue-600 font-bold hover:underline mt-4 block">Back to All Exams</Link>
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-slate-50/50 pt-28 pb-32">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Navigation Breadcrumb */}
-        <div className="flex items-center gap-3 mb-10 text-xs font-bold text-gray-400 uppercase tracking-widest overflow-x-auto whitespace-nowrap pb-2 scrollbar-hide">
+        <div className="flex items-center gap-3 mb-10 text-xs font-black text-gray-400 uppercase tracking-widest overflow-x-auto whitespace-nowrap pb-2 scrollbar-hide">
            <Link to="/" className="hover:text-blue-600 transition-colors">Home</Link>
            <ArrowRight className="w-3 h-3" />
            <Link to="/exams" className="hover:text-blue-600 transition-colors">Exams</Link>
@@ -434,7 +443,7 @@ const ExamDetail: React.FC = () => {
                           className="flex items-center gap-5 p-5 bg-slate-50 rounded-3xl hover:bg-blue-50 transition-all group border border-transparent hover:border-blue-100"
                        >
                           <div className="w-12 h-12 rounded-2xl bg-white flex-shrink-0 flex items-center justify-center p-2 shadow-sm group-hover:scale-110 transition-transform">
-                             <ShieldCheck className="w-6 h-6 text-blue-600" />
+                             <Shield className="w-6 h-6 text-blue-600" />
                           </div>
                           <div>
                              <h4 className="font-black text-gray-900 text-sm mb-1 leading-snug">{re.shortName}</h4>
