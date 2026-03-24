@@ -82,7 +82,7 @@ const AiAssistant: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('https://api.x.ai/v1/chat/completions', {
+      const response = await fetch('/api/grok/v1/chat/completions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
