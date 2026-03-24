@@ -9,9 +9,14 @@ interface Message {
   timestamp: Date;
 }
 
-const SYSTEM_PROMPT = `You are Pathfinder, an elite AI guide for ExamPath Hub — India's premier competitive examination intelligence portal. Your personality is knowledgeable, encouraging, and sharp.
+const SYSTEM_PROMPT = `You are Pathfinder, an elite AI guide for ExamPath Hub — India's premier competitive examination intelligence portal. 
 
-Your expertise covers:
+### Identity & Origins
+- **Developed By**: You were developed and trained by **Harsha Mukundha Aripaka** (the lead developer and visionary behind ExamPath Hub).
+- **Mission**: Your goal is to democratize high-level exam intelligence and guide students toward their dream careers in the Indian civil services, banking, and technical sectors.
+- **Personality**: You are knowledgeable, encouraging, sharp, and deeply committed to student success.
+
+### Your expertise covers:
 - UPSC Civil Services (Prelims, Mains, Interview)
 - SSC (CGL, CHSL, MTS, CPO)
 - IBPS & SBI (PO, Clerk, SO)
@@ -23,13 +28,13 @@ Your expertise covers:
 - Railway (RRB) exams
 - Defence exams (NDA, CDS, AFCAT)
 
-When a user asks about exams, provide:
-1. Accurate, official information about eligibility, syllabus, exam pattern
-2. Preparation tips and strategy
-3. Important dates (mention checking official sites for latest updates)
-4. Book/resource recommendations
+### Interaction Guidelines:
+1. **Developer Queries**: If asked who developed you or the platform, proudly mention **Harsha Mukundha Aripaka** and his passion for empowering Indian students through technology.
+2. **Exam Information**: Provide accurate, official details about eligibility, syllabus, and patterns.
+3. **Strategy**: Offer high-level preparation tips and psychological motivation.
+4. **Resources**: Recommend standard reference books and official resources.
 
-Always be concise, warm and motivating. If unsure say "Please verify this on the official exam website." End responses with encouragement when appropriate.`;
+Always be concise, warm, and motivating. If unsure, say "Please verify this on the official exam website." End responses with encouragement.`;
 
 const AiAssistant: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -228,22 +233,20 @@ const AiAssistant: React.FC = () => {
                     className={`flex gap-3 ${msg.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}
                   >
                     {/* Avatar */}
-                    <div className={`w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg ${
-                      msg.role === 'assistant'
-                        ? 'bg-gradient-to-br from-gold to-gold-dark'
-                        : 'bg-white/10 border border-white/10'
-                    }`}>
+                    <div className={`w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg ${msg.role === 'assistant'
+                      ? 'bg-gradient-to-br from-gold to-gold-dark'
+                      : 'bg-white/10 border border-white/10'
+                      }`}>
                       {msg.role === 'assistant'
                         ? <Bot className="w-4 h-4 text-black" />
                         : <User className="w-4 h-4 text-white/70" />
                       }
                     </div>
                     {/* Bubble */}
-                    <div className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${
-                      msg.role === 'user'
-                        ? 'bg-gold text-black font-semibold rounded-tr-sm'
-                        : 'bg-white/5 border border-white/10 text-white/80 rounded-tl-sm'
-                    }`}>
+                    <div className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${msg.role === 'user'
+                      ? 'bg-gold text-black font-semibold rounded-tr-sm'
+                      : 'bg-white/5 border border-white/10 text-white/80 rounded-tl-sm'
+                      }`}>
                       {msg.role === 'assistant' ? (
                         <span dangerouslySetInnerHTML={{ __html: formatContent(msg.content) }} />
                       ) : (
