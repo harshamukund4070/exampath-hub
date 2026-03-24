@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import { motion, AnimatePresence } from 'framer-motion';
+import AiAssistant from './components/AiAssistant';
 
 // Lazy load pages for better performance
 const Home = lazy(() => import('./pages/Home'));
@@ -46,6 +47,7 @@ const App: React.FC = () => {
           </Suspense>
         </main>
         <Footer />
+        <AiAssistant />
 
         {/* Floating Action Button for Scroll to Top */}
         <button
