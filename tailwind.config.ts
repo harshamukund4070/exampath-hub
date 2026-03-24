@@ -25,10 +25,10 @@ export default {
           dark: "#AA8C2C",
         },
         black: {
-          DEFAULT: "#875858ff",
-          deep: "#c367c0ff",
-          charcoal: "#cacdd5ff",
-          card: "#29635eff",
+          DEFAULT: "#000000",
+          deep: "#0A0A0A",
+          charcoal: "#111111",
+          card: "#1A1A1A",
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -113,7 +113,7 @@ export default {
           "50%": { transform: "translateY(-15px)" },
         },
         "glow": {
-          "0%, 100%": { boxShadow: "0 0 5px rgba(222, 178, 33, 0.2)" },
+          "0%, 100%": { boxShadow: "0 0 5px rgba(212, 175, 55, 0.2)" },
           "50%": { boxShadow: "0 0 20px rgba(212, 175, 55, 0.4)" },
         }
       },
