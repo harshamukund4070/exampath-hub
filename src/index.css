@@ -6,12 +6,12 @@
 
 @layer base {
   :root {
-    --black-deep: #0D0E12;
-    --black-charcoal: #15171C;
-    --black-card: #1A1D24;
+    --black-deep: #020202;
+    --black-charcoal: #050505;
+    --black-card: #080808;
     --gold: #D4AF37;
     --gold-light: #F9E498;
-    --gold-glow: rgba(212, 175, 55, 0.4);
+    --gold-glow: rgba(212, 175, 55, 0.3);
     
     --background: 220 20% 6%;
     --foreground: 210 20% 98%;

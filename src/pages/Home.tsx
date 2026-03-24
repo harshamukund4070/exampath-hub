@@ -5,6 +5,7 @@ import { useExams, useCategories } from '../hooks/useSupabaseData';
 import ExamCard from '../components/ExamCard';
 import CategoryCard from '../components/CategoryCard';
 import { useNavigate } from 'react-router-dom';
+import Testimonials from '../components/Testimonials';
 
 const Home: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -281,6 +282,7 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
+      <Testimonials />
     </div>
   );
 };

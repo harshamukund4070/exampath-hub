@@ -113,8 +113,8 @@ const Profile: React.FC = () => {
                 </div>
               </div>
               
-              <h2 className="text-2xl font-black text-white font-display italic tracking-tight mb-2 uppercase">A. Harsha Mukundha</h2>
-              <p className="text-[10px] font-black text-white/40 uppercase tracking-[0.4em] mb-10">Chief Aspirant Officer</p>
+              <h2 className="text-2xl font-black text-white font-display italic tracking-tight mb-2 uppercase">Aripaka Harsha Mukundha</h2>
+              <p className="text-[10px] font-black text-white/40 uppercase tracking-[0.4em] mb-10">Lead Developer & Founder</p>
               
               <div className="space-y-3">
                 {[
