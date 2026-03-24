@@ -46,7 +46,7 @@ const AiAssistant: React.FC = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
-  const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+  const apiKey = import.meta.env.VITE_GROQ_CLOUD_API_KEY;
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -83,38 +83,35 @@ const AiAssistant: React.FC = () => {
 
     try {
       if (!apiKey) {
-        throw new Error('Gemini API key not configured. Add VITE_GEMINI_API_KEY to your env variables.');
+        throw new Error('Groq API key not configured. Add VITE_GROQ_CLOUD_API_KEY to your env variables.');
       }
 
-      // Convert messages to Gemini format
-      const contents = messages.slice(1).map(m => ({
-        role: m.role === 'assistant' ? 'model' : 'user',
-        parts: [{ text: m.content }]
-      }));
-      contents.push({ role: 'user', parts: [{ text: trimmed }] });
-
-      const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
+      const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`,
         },
         body: JSON.stringify({
-          contents: [{ role: 'user', parts: [{ text: SYSTEM_PROMPT + "\n\nUser Question: " + trimmed }] }],
-          generationConfig: {
-            maxOutputTokens: 1000,
-            temperature: 0.7,
-          }
+          model: 'llama-3.3-70b-versatile',
+          messages: [
+            { role: 'system', content: SYSTEM_PROMPT },
+            ...messages.map(m => ({ role: m.role, content: m.content })),
+            { role: 'user', content: trimmed },
+          ],
+          max_tokens: 1024,
+          temperature: 0.7,
         }),
       });
 
       if (!response.ok) {
         const errData = await response.json();
-        console.error('Gemini API error:', response.status, errData);
+        console.error('Groq API error:', response.status, errData);
         throw new Error(`API ${response.status}: ${errData.error?.message || 'Unknown error'}`);
       }
 
       const data = await response.json();
-      const aiContent = data.candidates?.[0]?.content?.parts?.[0]?.text || 'I apologize, I couldn\'t process that. Please try again.';
+      const aiContent = data.choices?.[0]?.message?.content || 'I apologize, I couldn\'t process that. Please try again.';
 
       const aiMsg: Message = {
         id: (Date.now() + 1).toString(),
@@ -129,7 +126,7 @@ const AiAssistant: React.FC = () => {
       setMessages(prev => [...prev, {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: `⚠️ ${err?.message || 'Could not connect to Gemini. Please try again.'}`,
+        content: `⚠️ ${err?.message || 'Could not connect to Groq. Please try again.'}`,
         timestamp: new Date(),
       }]);
     } finally {
@@ -213,7 +210,7 @@ const AiAssistant: React.FC = () => {
                     <h3 className="text-white font-black text-base tracking-tight">Pathfinder</h3>
                     <Sparkles className="w-3 h-3 text-gold animate-pulse" />
                   </div>
-                  <p className="text-white/30 text-[10px] font-black uppercase tracking-[0.3em]">AI Exam Guide · Powered by Gemini</p>
+                  <p className="text-white/30 text-[10px] font-black uppercase tracking-[0.3em]">AI Exam Guide · Powered by Groq</p>
                 </div>
                 <div className="ml-auto flex items-center gap-2">
                   <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
@@ -308,7 +305,7 @@ const AiAssistant: React.FC = () => {
                   </button>
                 </div>
                 <p className="text-center text-white/15 text-[9px] font-black uppercase tracking-widest mt-2">
-                  Powered by Gemini · ExamPath Intelligence
+                  Powered by Groq · ExamPath Intelligence
                 </p>
               </div>
             </div>
