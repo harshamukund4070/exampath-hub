@@ -93,7 +93,7 @@ const AiAssistant: React.FC = () => {
           'Authorization': `Bearer ${apiKey}`,
         },
         body: JSON.stringify({
-          model: 'grok-beta',
+          model: 'grok-2',
           messages: [
             { role: 'system', content: SYSTEM_PROMPT },
             ...messages.map(m => ({ role: m.role, content: m.content })),
