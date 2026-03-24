@@ -82,14 +82,18 @@ const AiAssistant: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/grok/v1/chat/completions', {
+      if (!apiKey) {
+        throw new Error('API key not configured. Add VITE_GROK_API_KEY to your .env and restart the dev server.');
+      }
+
+      const response = await fetch('https://api.x.ai/v1/chat/completions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${apiKey}`,
         },
         body: JSON.stringify({
-          model: 'grok-3-latest',
+          model: 'grok-2-latest',
           messages: [
             { role: 'system', content: SYSTEM_PROMPT },
             ...messages.map(m => ({ role: m.role, content: m.content })),
@@ -101,7 +105,9 @@ const AiAssistant: React.FC = () => {
       });
 
       if (!response.ok) {
-        throw new Error(`API error: ${response.status}`);
+        const errText = await response.text();
+        console.error('Grok API error:', response.status, errText);
+        throw new Error(`API ${response.status}: ${errText}`);
       }
 
       const data = await response.json();
@@ -115,11 +121,12 @@ const AiAssistant: React.FC = () => {
       };
 
       setMessages(prev => [...prev, aiMsg]);
-    } catch (err) {
+    } catch (err: any) {
+      console.error('Pathfinder error:', err);
       setMessages(prev => [...prev, {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: '⚠️ Oops! I couldn\'t connect to the server. Please check your internet connection and try again.',
+        content: `⚠️ ${err?.message || 'Could not connect. Please try again.'}`,
         timestamp: new Date(),
       }]);
     } finally {
