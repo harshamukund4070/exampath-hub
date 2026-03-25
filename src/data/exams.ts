@@ -50,6 +50,7 @@ export interface Exam {
     youtubeChannels: string[];
   };
   relatedExamIds: string[];
+  dataSource: "official" | "tentative" | "year-round";
 }
 
 export const categories: Category[] = [
@@ -71,6 +72,7 @@ export const categories: Category[] = [
 ];
 
 export const exams: Exam[] = [
+  // ==================== UPSC & CENTRAL EXAMS ====================
   {
     id: "1",
     name: "UPSC Civil Services Examination",
@@ -99,11 +101,11 @@ export const exams: Exam[] = [
       { section: "Mains - Essay", topics: ["Two essays from given topics"] },
     ],
     importantDates: {
-      notification: "February 2026",
-      applicationStart: "February 15, 2026",
-      applicationEnd: "March 15, 2026",
+      notification: "February 4, 2026",
+      applicationStart: "February 4, 2026",
+      applicationEnd: "February 24, 2026",
       admitCard: "May 2026",
-      examDate: "June 1, 2026",
+      examDate: "May 24, 2026",
       result: "August 2026",
     },
     cutOff: [
@@ -123,6 +125,7 @@ export const exams: Exam[] = [
       youtubeChannels: ["StudyIQ", "Unacademy UPSC", "Drishti IAS"],
     },
     relatedExamIds: ["2", "5"],
+    dataSource: "official",
   },
   {
     id: "2",
@@ -152,11 +155,11 @@ export const exams: Exam[] = [
       { section: "Tier II - Session II", topics: ["English Language", "General Awareness", "Computer Knowledge"] },
     ],
     importantDates: {
-      notification: "April 2026",
-      applicationStart: "April 10, 2026",
-      applicationEnd: "May 10, 2026",
-      admitCard: "July 2026",
-      examDate: "August 2026",
+      notification: "March 31, 2026",
+      applicationStart: "March 31, 2026",
+      applicationEnd: "April 30, 2026",
+      admitCard: "May 2026",
+      examDate: "May-June 2026",
       result: "October 2026",
     },
     cutOff: [
@@ -176,6 +179,7 @@ export const exams: Exam[] = [
       youtubeChannels: ["Adda247", "SSC Wallah", "Pinnacle SSC"],
     },
     relatedExamIds: ["3", "4"],
+    dataSource: "official",
   },
   {
     id: "3",
@@ -203,12 +207,12 @@ export const exams: Exam[] = [
       { section: "Tier I", topics: ["Quantitative Aptitude", "English Language", "General Intelligence", "General Awareness"] },
     ],
     importantDates: {
-      notification: "March 2026",
-      applicationStart: "March 20, 2026",
-      applicationEnd: "April 20, 2026",
+      notification: "April 30, 2026",
+      applicationStart: "April 30, 2026",
+      applicationEnd: "May 31, 2026",
       admitCard: "June 2026",
-      examDate: "July 2026",
-      result: "September 2026",
+      examDate: "July-September 2026",
+      result: "December 2026",
     },
     cutOff: [
       { category: "General", marks: "135/200" },
@@ -225,6 +229,7 @@ export const exams: Exam[] = [
       youtubeChannels: ["Adda247", "Exampur"],
     },
     relatedExamIds: ["2", "4"],
+    dataSource: "official",
   },
   {
     id: "4",
@@ -253,12 +258,12 @@ export const exams: Exam[] = [
       { section: "Session II", topics: ["English Language", "General Awareness"] },
     ],
     importantDates: {
-      notification: "May 2026",
-      applicationStart: "May 15, 2026",
-      applicationEnd: "June 15, 2026",
-      admitCard: "August 2026",
-      examDate: "September 2026",
-      result: "November 2026",
+      notification: "To be announced",
+      applicationStart: "To be announced",
+      applicationEnd: "To be announced",
+      admitCard: "To be announced",
+      examDate: "To be announced",
+      result: "To be announced",
     },
     cutOff: [
       { category: "General", marks: "110/150" },
@@ -275,6 +280,7 @@ export const exams: Exam[] = [
       youtubeChannels: ["Adda247", "Exampur"],
     },
     relatedExamIds: ["2", "3"],
+    dataSource: "tentative",
   },
   {
     id: "5",
@@ -326,6 +332,7 @@ export const exams: Exam[] = [
       youtubeChannels: ["Defence Adda", "MKC NDA"],
     },
     relatedExamIds: ["6", "1"],
+    dataSource: "official",
   },
   {
     id: "6",
@@ -376,7 +383,10 @@ export const exams: Exam[] = [
       youtubeChannels: ["Defence Adda", "MKC"],
     },
     relatedExamIds: ["5"],
+    dataSource: "official",
   },
+
+  // ==================== BANKING EXAMS ====================
   {
     id: "7",
     name: "IBPS Probationary Officer",
@@ -404,12 +414,12 @@ export const exams: Exam[] = [
       { section: "Mains", topics: ["Reasoning & Computer Aptitude", "English Language", "Data Analysis & Interpretation", "General/Economy/Banking Awareness"] },
     ],
     importantDates: {
-      notification: "August 2026",
+      notification: "August 1, 2026",
       applicationStart: "August 1, 2026",
-      applicationEnd: "August 30, 2026",
-      admitCard: "September 2026",
-      examDate: "October 2026",
-      result: "December 2026",
+      applicationEnd: "August 28, 2026",
+      admitCard: "October 11, 2026",
+      examDate: "October 19-20, 2026",
+      result: "November 2026",
     },
     cutOff: [
       { category: "General", marks: "62/100" },
@@ -427,6 +437,7 @@ export const exams: Exam[] = [
       youtubeChannels: ["Adda247", "Oliveboard"],
     },
     relatedExamIds: ["8", "9"],
+    dataSource: "official",
   },
   {
     id: "8",
@@ -455,12 +466,12 @@ export const exams: Exam[] = [
       { section: "Mains", topics: ["Reasoning & Computer Aptitude", "Data Analysis", "General/Economy/Banking", "English Language", "Descriptive Test"] },
     ],
     importantDates: {
-      notification: "September 2026",
-      applicationStart: "September 5, 2026",
-      applicationEnd: "September 30, 2026",
-      admitCard: "November 2026",
-      examDate: "December 2026",
-      result: "February 2027",
+      notification: "June 24, 2026",
+      applicationStart: "June 24, 2026",
+      applicationEnd: "July 14, 2026",
+      admitCard: "July 2026",
+      examDate: "July-August 2026",
+      result: "December 2026",
     },
     cutOff: [
       { category: "General", marks: "67.5/100" },
@@ -468,7 +479,7 @@ export const exams: Exam[] = [
     ],
     selectionProcess: "Prelims → Mains → Group Exercise & Interview",
     salaryRange: "₹41,960 - ₹63,840 per month",
-    vacancies: 2000,
+    vacancies: 541,
     officialWebsite: "https://sbi.co.in/careers",
     status: "upcoming",
     viewCount: 24800,
@@ -477,6 +488,7 @@ export const exams: Exam[] = [
       youtubeChannels: ["Adda247", "Oliveboard"],
     },
     relatedExamIds: ["7", "9"],
+    dataSource: "official",
   },
   {
     id: "9",
@@ -507,12 +519,12 @@ export const exams: Exam[] = [
       { section: "Phase II Paper III", topics: ["Finance & Management"] },
     ],
     importantDates: {
-      notification: "July 2026",
-      applicationStart: "July 10, 2026",
-      applicationEnd: "August 5, 2026",
-      admitCard: "September 2026",
-      examDate: "October 2026",
-      result: "January 2027",
+      notification: "February 6, 2026",
+      applicationStart: "February 6, 2026",
+      applicationEnd: "February 26, 2026",
+      admitCard: "March 2026",
+      examDate: "March 14, 2026",
+      result: "April 2026",
     },
     cutOff: [
       { category: "General", marks: "118/200" },
@@ -520,16 +532,19 @@ export const exams: Exam[] = [
     ],
     selectionProcess: "Phase I → Phase II → Interview → Final Merit",
     salaryRange: "₹55,200 - ₹1,76,400 per month",
-    vacancies: 312,
+    vacancies: 21,
     officialWebsite: "https://rbi.org.in",
-    status: "upcoming",
+    status: "ongoing",
     viewCount: 19400,
     resources: {
       books: ["Indian Economy by Ramesh Singh", "Mrunal Economy"],
       youtubeChannels: ["Unacademy", "Study IQ"],
     },
     relatedExamIds: ["7", "8"],
+    dataSource: "official",
   },
+
+  // ==================== RAILWAY EXAMS ====================
   {
     id: "10",
     name: "RRB Non-Technical Popular Categories",
@@ -557,12 +572,12 @@ export const exams: Exam[] = [
       { section: "CBT 2", topics: ["Mathematics", "General Intelligence", "General Awareness (higher difficulty)"] },
     ],
     importantDates: {
-      notification: "January 2026",
-      applicationStart: "February 2026",
-      applicationEnd: "March 2026",
-      admitCard: "May 2026",
-      examDate: "June 2026",
-      result: "September 2026",
+      notification: "Released",
+      applicationStart: "Closed",
+      applicationEnd: "Closed",
+      admitCard: "March 12, 2026",
+      examDate: "March 16-27, 2026",
+      result: "April 2026",
     },
     cutOff: [
       { category: "General", marks: "72.43/100" },
@@ -579,6 +594,7 @@ export const exams: Exam[] = [
       youtubeChannels: ["RRB Adda247", "Exampur"],
     },
     relatedExamIds: ["11"],
+    dataSource: "official",
   },
   {
     id: "11",
@@ -607,11 +623,11 @@ export const exams: Exam[] = [
       { section: "CBT 2", topics: ["General Awareness", "Physics & Chemistry", "Basics of Computers", "Environment", "Technical Abilities"] },
     ],
     importantDates: {
-      notification: "April 2026",
-      applicationStart: "April 15, 2026",
-      applicationEnd: "May 15, 2026",
-      admitCard: "July 2026",
-      examDate: "August 2026",
+      notification: "March 31, 2026",
+      applicationStart: "March 31, 2026",
+      applicationEnd: "April 30, 2026",
+      admitCard: "May 2026",
+      examDate: "May-June 2026",
       result: "November 2026",
     },
     cutOff: [
@@ -629,7 +645,10 @@ export const exams: Exam[] = [
       youtubeChannels: ["Adda247", "Wifistudy"],
     },
     relatedExamIds: ["10"],
+    dataSource: "official",
   },
+
+  // ==================== MBA ENTRANCE EXAMS ====================
   {
     id: "12",
     name: "Common Admission Test",
@@ -659,10 +678,10 @@ export const exams: Exam[] = [
     ],
     importantDates: {
       notification: "July 2026",
-      applicationStart: "August 1, 2026",
-      applicationEnd: "September 15, 2026",
-      admitCard: "October 2026",
-      examDate: "November 29, 2026",
+      applicationStart: "August 2026",
+      applicationEnd: "September 2026",
+      admitCard: "November 2026",
+      examDate: "November 2026",
       result: "January 2027",
     },
     cutOff: [
@@ -681,6 +700,7 @@ export const exams: Exam[] = [
       youtubeChannels: ["Unacademy CAT", "IMS", "Career Launcher"],
     },
     relatedExamIds: ["13", "14"],
+    dataSource: "tentative",
   },
   {
     id: "13",
@@ -731,6 +751,7 @@ export const exams: Exam[] = [
       youtubeChannels: ["IMS", "Career Launcher"],
     },
     relatedExamIds: ["12"],
+    dataSource: "official",
   },
   {
     id: "14",
@@ -780,7 +801,10 @@ export const exams: Exam[] = [
       youtubeChannels: ["Unacademy"],
     },
     relatedExamIds: ["12", "13"],
+    dataSource: "official",
   },
+
+  // ==================== ENGINEERING EXAMS ====================
   {
     id: "15",
     name: "JEE Main",
@@ -813,7 +837,7 @@ export const exams: Exam[] = [
       applicationStart: "November 15, 2025",
       applicationEnd: "December 15, 2025",
       admitCard: "January 2026",
-      examDate: "January 22-30, 2026",
+      examDate: "January 21-24, 2026",
       result: "February 2026",
     },
     cutOff: [
@@ -831,6 +855,7 @@ export const exams: Exam[] = [
       youtubeChannels: ["Physics Wallah", "Unacademy JEE", "Vedantu JEE"],
     },
     relatedExamIds: ["16", "17"],
+    dataSource: "official",
   },
   {
     id: "16",
@@ -864,7 +889,7 @@ export const exams: Exam[] = [
       applicationStart: "April 20, 2026",
       applicationEnd: "May 10, 2026",
       admitCard: "May 2026",
-      examDate: "June 8, 2026",
+      examDate: "May 17 or 24, 2026",
       result: "June 2026",
     },
     cutOff: [
@@ -882,58 +907,7 @@ export const exams: Exam[] = [
       youtubeChannels: ["Physics Wallah", "Motion IIT JEE"],
     },
     relatedExamIds: ["15"],
-  },
-  {
-    id: "17",
-    name: "NEET-UG",
-    slug: "neet-ug",
-    shortName: "NEET",
-    categoryId: "medical",
-    conductingBody: "National Testing Agency (NTA)",
-    level: "National",
-    frequency: "Annual",
-    mode: "Offline",
-    eligibility: {
-      education: "12th pass with Physics, Chemistry, Biology/Biotechnology",
-      ageLimit: "17+ years (no upper age limit)",
-      nationality: "Indian citizen / NRI / OCI / PIO",
-    },
-    examPattern: {
-      stages: ["Single Exam"],
-      subjects: ["Physics", "Chemistry", "Biology (Botany + Zoology)"],
-      markingScheme: "720 marks (180 questions × 4 marks; -1 for wrong answer)",
-      duration: "3 hours 20 minutes",
-      negativeMarking: true,
-    },
-    syllabus: [
-      { section: "Physics", topics: ["Physical World", "Kinematics", "Laws of Motion", "Thermodynamics", "Optics", "Modern Physics", "Electrostatics"] },
-      { section: "Chemistry", topics: ["Some Basic Concepts", "Atomic Structure", "Chemical Bonding", "Organic Chemistry", "Polymers"] },
-      { section: "Biology", topics: ["Diversity in Living World", "Structural Organisation", "Cell Structure", "Plant Physiology", "Human Physiology", "Genetics", "Ecology"] },
-    ],
-    importantDates: {
-      notification: "February 2026",
-      applicationStart: "February 15, 2026",
-      applicationEnd: "March 15, 2026",
-      admitCard: "April 2026",
-      examDate: "May 4, 2026",
-      result: "June 2026",
-    },
-    cutOff: [
-      { category: "General", marks: "720-137 (50th percentile)" },
-      { category: "OBC", marks: "136-107 (40th percentile)" },
-      { category: "SC/ST", marks: "106-107 (40th percentile)" },
-    ],
-    selectionProcess: "NEET Score → MCC / State Counselling → College Allotment",
-    salaryRange: "₹60,000 - ₹2,00,000+ per month (after MBBS + specialization)",
-    vacancies: null,
-    officialWebsite: "https://neet.nta.nic.in",
-    status: "upcoming",
-    viewCount: 61300,
-    resources: {
-      books: ["NCERT Biology", "Trueman's Biology", "DC Pandey Physics", "VK Jaiswal Chemistry"],
-      youtubeChannels: ["Physics Wallah", "NEET Wallah", "Vedantu NEET"],
-    },
-    relatedExamIds: ["15"],
+    dataSource: "tentative",
   },
   {
     id: "18",
@@ -984,7 +958,64 @@ export const exams: Exam[] = [
       youtubeChannels: ["Gate Smashers", "Unacademy GATE"],
     },
     relatedExamIds: ["15", "16"],
+    dataSource: "tentative",
   },
+
+  // ==================== MEDICAL EXAMS ====================
+  {
+    id: "17",
+    name: "NEET-UG",
+    slug: "neet-ug",
+    shortName: "NEET",
+    categoryId: "medical",
+    conductingBody: "National Testing Agency (NTA)",
+    level: "National",
+    frequency: "Annual",
+    mode: "Offline",
+    eligibility: {
+      education: "12th pass with Physics, Chemistry, Biology/Biotechnology",
+      ageLimit: "17+ years (no upper age limit)",
+      nationality: "Indian citizen / NRI / OCI / PIO",
+    },
+    examPattern: {
+      stages: ["Single Exam"],
+      subjects: ["Physics", "Chemistry", "Biology (Botany + Zoology)"],
+      markingScheme: "720 marks (180 questions × 4 marks; -1 for wrong answer)",
+      duration: "3 hours 20 minutes",
+      negativeMarking: true,
+    },
+    syllabus: [
+      { section: "Physics", topics: ["Physical World", "Kinematics", "Laws of Motion", "Thermodynamics", "Optics", "Modern Physics", "Electrostatics"] },
+      { section: "Chemistry", topics: ["Some Basic Concepts", "Atomic Structure", "Chemical Bonding", "Organic Chemistry", "Polymers"] },
+      { section: "Biology", topics: ["Diversity in Living World", "Structural Organisation", "Cell Structure", "Plant Physiology", "Human Physiology", "Genetics", "Ecology"] },
+    ],
+    importantDates: {
+      notification: "February 8, 2026",
+      applicationStart: "February 8, 2026",
+      applicationEnd: "March 11, 2026",
+      admitCard: "April 2026",
+      examDate: "May 3, 2026",
+      result: "June 2026",
+    },
+    cutOff: [
+      { category: "General", marks: "720-164" },
+      { category: "OBC/SC/ST", marks: "163-129" },
+    ],
+    selectionProcess: "NEET Score → MCC / State Counselling → College Allotment",
+    salaryRange: "₹60,000 - ₹2,00,000+ per month (after MBBS + specialization)",
+    vacancies: null,
+    officialWebsite: "https://neet.nta.nic.in",
+    status: "upcoming",
+    viewCount: 61300,
+    resources: {
+      books: ["NCERT Biology", "Trueman's Biology", "DC Pandey Physics", "VK Jaiswal Chemistry"],
+      youtubeChannels: ["Physics Wallah", "NEET Wallah", "Vedantu NEET"],
+    },
+    relatedExamIds: ["15"],
+    dataSource: "official",
+  },
+
+  // ==================== CENTRAL GOVERNMENT EXAMS ====================
   {
     id: "19",
     name: "UGC NET",
@@ -1011,12 +1042,12 @@ export const exams: Exam[] = [
       { section: "Paper I", topics: ["Teaching Aptitude", "Research Aptitude", "Comprehension", "Communication", "Mathematical Reasoning", "Logical Reasoning", "Data Interpretation", "ICT", "People & Environment", "Higher Education"] },
     ],
     importantDates: {
-      notification: "March 2026",
-      applicationStart: "March 10, 2026",
-      applicationEnd: "April 10, 2026",
-      admitCard: "May 2026",
+      notification: "April 2026",
+      applicationStart: "April 2026",
+      applicationEnd: "May 2026",
+      admitCard: "June 2026",
       examDate: "June 2026",
-      result: "August 2026",
+      result: "July-August 2026",
     },
     cutOff: [
       { category: "General", marks: "60% in each paper" },
@@ -1032,6 +1063,7 @@ export const exams: Exam[] = [
       youtubeChannels: ["Adda247 NET", "UGC NET JRF"],
     },
     relatedExamIds: ["1"],
+    dataSource: "tentative",
   },
   {
     id: "20",
@@ -1041,7 +1073,7 @@ export const exams: Exam[] = [
     categoryId: "central",
     conductingBody: "Central Board of Secondary Education (CBSE)",
     level: "National",
-    frequency: "Bi-annual",
+    frequency: "Annual",
     mode: "Online",
     eligibility: {
       education: "B.Ed / D.El.Ed with minimum 50% in graduation",
@@ -1060,12 +1092,12 @@ export const exams: Exam[] = [
       { section: "Paper II", topics: ["Child Development & Pedagogy", "Language I", "Language II", "Mathematics & Science OR Social Studies"] },
     ],
     importantDates: {
-      notification: "April 2026",
-      applicationStart: "April 15, 2026",
-      applicationEnd: "May 10, 2026",
-      admitCard: "June 2026",
-      examDate: "July 2026",
-      result: "August 2026",
+      notification: "To be announced",
+      applicationStart: "To be announced",
+      applicationEnd: "To be announced",
+      admitCard: "To be announced",
+      examDate: "December 2026",
+      result: "To be announced",
     },
     cutOff: [
       { category: "General", marks: "90/150 (60%)" },
@@ -1082,7 +1114,10 @@ export const exams: Exam[] = [
       youtubeChannels: ["Exampur", "Adda247"],
     },
     relatedExamIds: ["19"],
+    dataSource: "tentative",
   },
+
+  // ==================== OTHER COMPETITIVE EXAMS ====================
   {
     id: "21",
     name: "CLAT - Common Law Admission Test",
@@ -1112,7 +1147,7 @@ export const exams: Exam[] = [
     ],
     importantDates: {
       notification: "June 2026",
-      applicationStart: "July 1, 2026",
+      applicationStart: "July 2026",
       applicationEnd: "October 2026",
       admitCard: "November 2026",
       examDate: "December 6, 2026",
@@ -1133,7 +1168,10 @@ export const exams: Exam[] = [
       youtubeChannels: ["Unacademy Law", "LegalEdge"],
     },
     relatedExamIds: ["12"],
+    dataSource: "tentative",
   },
+
+  // ==================== TECHNICAL & PROFESSIONAL EXAMS ====================
   {
     id: "22",
     name: "CA Foundation",
@@ -1182,6 +1220,7 @@ export const exams: Exam[] = [
       youtubeChannels: ["CA Wallah", "Unacademy CA"],
     },
     relatedExamIds: ["23"],
+    dataSource: "tentative",
   },
   {
     id: "23",
@@ -1230,7 +1269,10 @@ export const exams: Exam[] = [
       youtubeChannels: ["CS Wallah", "Unacademy CS"],
     },
     relatedExamIds: ["22"],
+    dataSource: "tentative",
   },
+
+  // ==================== INTERNATIONAL EXAMS ====================
   {
     id: "24",
     name: "IELTS - International English Language Testing System",
@@ -1282,6 +1324,7 @@ export const exams: Exam[] = [
       youtubeChannels: ["IELTS Liz", "E2 IELTS"],
     },
     relatedExamIds: ["25", "26"],
+    dataSource: "year-round",
   },
   {
     id: "25",
@@ -1333,6 +1376,7 @@ export const exams: Exam[] = [
       youtubeChannels: ["GregMAT", "Magoosh GRE"],
     },
     relatedExamIds: ["24", "26"],
+    dataSource: "year-round",
   },
   {
     id: "26",
@@ -1384,6 +1428,7 @@ export const exams: Exam[] = [
       youtubeChannels: ["e-GMAT", "GMAT Club"],
     },
     relatedExamIds: ["12", "25"],
+    dataSource: "year-round",
   },
   {
     id: "27",
@@ -1434,6 +1479,7 @@ export const exams: Exam[] = [
       youtubeChannels: ["Study IQ Marathi", "MPSC Adda"],
     },
     relatedExamIds: ["1", "28"],
+    dataSource: "tentative",
   },
   {
     id: "28",
@@ -1483,6 +1529,7 @@ export const exams: Exam[] = [
       youtubeChannels: ["Drishti IAS", "Study IQ"],
     },
     relatedExamIds: ["1", "27"],
+    dataSource: "tentative",
   },
   {
     id: "29",
@@ -1535,6 +1582,7 @@ export const exams: Exam[] = [
       youtubeChannels: ["TST Prep", "TOEFL Resources"],
     },
     relatedExamIds: ["24", "25"],
+    dataSource: "year-round",
   },
   {
     id: "30",
@@ -1585,8 +1633,11 @@ export const exams: Exam[] = [
       youtubeChannels: ["Khan Academy SAT", "Scalar Learning"],
     },
     relatedExamIds: ["24", "25"],
+    dataSource: "year-round",
   },
 ];
+
+// ==================== HELPER FUNCTIONS ====================
 
 export function getExamsByCategory(categoryId: string): Exam[] {
   const cat = categories.find(c => c.id === categoryId);
