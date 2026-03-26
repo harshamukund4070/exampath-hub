@@ -36,7 +36,7 @@ const Home: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen text-white">
       {/* Breaking News Ticker */}
-      <div className="fixed top-24 left-0 right-0 z-40 bg-black/60 backdrop-blur-3xl border-y border-white/5 py-3 overflow-hidden">
+      <div className="absolute top-24 left-0 right-0 z-40 bg-black/60 backdrop-blur-3xl border-y border-white/5 py-3 overflow-hidden">
         <div className="flex whitespace-nowrap animate-ticker">
           {[
             "UPSC Civil Services 2024 Prelims Results Out!",
