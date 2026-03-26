@@ -22,8 +22,12 @@
   }
 
   body {
-    @apply bg-black-deep text-white/90 selection:bg-gold selection:text-black antialiased overflow-x-hidden;
+    @apply text-white/90 selection:bg-gold selection:text-black antialiased overflow-x-hidden;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(to bottom, rgba(10, 10, 10, 0.85), rgba(17, 17, 17, 0.98)), url('/bg-pattern.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
   }
 
   h1, h2, h3, h4, h5, h6 {
