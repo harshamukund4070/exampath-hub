@@ -6,9 +6,9 @@
 
 @layer base {
   :root {
-    --black-deep: #0A0A0A;
-    --black-charcoal: #111111;
-    --black-card: #1A1A1A;
+    --black-deep: rgba(10, 10, 10, 0.6);
+    --black-charcoal: rgba(17, 17, 17, 0.6);
+    --black-card: rgba(26, 26, 26, 0.6);
     --gold: #D4AF37;
     --gold-light: #F9E498;
     --gold-glow: rgba(212, 175, 55, 0.4);
