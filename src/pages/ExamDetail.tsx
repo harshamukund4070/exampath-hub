@@ -60,13 +60,13 @@ const ExamDetail: React.FC = () => {
   }, [exam, allExams]);
 
   if (loading) return (
-    <div className="min-h-screen flex items-center justify-center bg-transparent">
+    <div className="min-h-screen flex items-center justify-center bg-black-deep">
       <div className="w-16 h-16 border-4 border-gold border-t-transparent rounded-full animate-spin"></div>
     </div>
   );
 
   if (!exam) return (
-    <div className="min-h-screen pt-32 text-center bg-transparent text-white">
+    <div className="min-h-screen pt-32 text-center bg-black-deep text-white">
       <h2 className="text-3xl font-black font-display italic">Intelligence Missing</h2>
       <p className="text-white/40 mt-4 uppercase tracking-widest text-xs">The requested entity does not exist in our repository.</p>
       <Link to="/exams" className="btn-gold mt-10 inline-block">Return to Database</Link>
@@ -74,7 +74,7 @@ const ExamDetail: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen bg-transparent pt-32 pb-40 text-white">
+    <div className="min-h-screen bg-black-deep pt-32 pb-40 text-white">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Navigation Breadcrumb */}
         <div className="flex items-center gap-4 mb-12 text-[10px] font-black text-white/20 uppercase tracking-[0.3em] overflow-x-auto whitespace-nowrap pb-4 scrollbar-hide">

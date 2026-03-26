@@ -26,9 +26,9 @@ export default {
         },
         black: {
           DEFAULT: "#000000",
-          deep: "rgba(10, 10, 10, 0.6)",
-          charcoal: "rgba(17, 17, 17, 0.6)",
-          card: "rgba(26, 26, 26, 0.6)",
+          deep: "#0A0A0A",
+          charcoal: "#111111",
+          card: "#1A1A1A",
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

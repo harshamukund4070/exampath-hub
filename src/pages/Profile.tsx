@@ -33,7 +33,7 @@ const Profile: React.FC = () => {
 
   if (!isLoggedIn) {
     return (
-      <div className="min-h-screen pt-48 pb-32 flex items-center justify-center bg-transparent px-4">
+      <div className="min-h-screen pt-48 pb-32 flex items-center justify-center bg-black-deep px-4">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gold/5 blur-[150px] rounded-full -z-10 animate-pulse"></div>
         
         <motion.div 
@@ -91,7 +91,7 @@ const Profile: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-transparent pt-48 pb-32">
+    <div className="min-h-screen bg-black-deep pt-48 pb-32">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid lg:grid-cols-4 gap-12">
           

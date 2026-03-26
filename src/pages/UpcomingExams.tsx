@@ -17,7 +17,7 @@ const UpcomingExams: React.FC = () => {
   }, [exams]);
 
   return (
-    <div className="min-h-screen bg-transparent pt-32 pb-40 text-white">
+    <div className="min-h-screen bg-black-deep pt-32 pb-40 text-white">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="mb-20 relative">
            <div className="absolute -top-10 left-0 w-64 h-64 bg-gold/5 blur-[100px] -z-10"></div>
