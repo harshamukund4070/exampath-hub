@@ -13,7 +13,7 @@ const ExamDetail = lazy(() => import('./pages/ExamDetail'));
 const Profile = lazy(() => import('./pages/Profile'));
 
 const LoadingFallback = () => (
-  <div className="min-h-screen flex items-center justify-center bg-black-deep">
+  <div className="min-h-screen flex items-center justify-center bg-transparent">
     <div className="flex flex-col items-center gap-8">
        <div className="w-20 h-20 border-2 border-gold/10 border-t-gold rounded-full animate-spin shadow-[0_0_40px_rgba(212,175,55,0.1)]"></div>
        <div className="flex flex-col items-center gap-2">
@@ -27,7 +27,7 @@ const LoadingFallback = () => (
 const App: React.FC = () => {
   return (
     <Router>
-      <div className="flex flex-col min-h-screen selection:bg-gold selection:text-black bg-black-deep">
+      <div className="flex flex-col min-h-screen selection:bg-gold selection:text-black bg-transparent">
         <Navbar />
         <main className="flex-grow">
           <Suspense fallback={<LoadingFallback />}>
