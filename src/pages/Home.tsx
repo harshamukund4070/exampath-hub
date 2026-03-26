@@ -257,26 +257,24 @@ const Home: React.FC = () => {
             </div>
             <div className="relative group">
                <div className="absolute inset-0 bg-gold/5 rounded-[40px] transform rotate-3 scale-105 -z-10 group-hover:rotate-0 transition-all duration-700"></div>
-               <div className="premium-glass rounded-[40px] border border-white/10 relative overflow-hidden h-full flex flex-col justify-end min-h-[500px]">
-                  <img src="/students-studying.png" alt="Dedicated students studying" className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 group-hover:opacity-70 transition-all duration-1000 z-0" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-0"></div>
-                  
-                  <div className="grid grid-cols-2 gap-6 relative z-10 p-10">
-                     <div className="p-6 rounded-3xl bg-black/50 backdrop-blur-md border border-white/10 hover:border-gold/50 transition-all hover:bg-black/70">
+               <div className="premium-glass p-12 rounded-[40px] border border-white/10 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-40 h-40 bg-gold/10 blur-3xl rounded-full"></div>
+                  <div className="grid grid-cols-2 gap-8 relative">
+                     <div className="p-8 rounded-3xl bg-white/5 border border-white/10 space-y-3 hover:border-gold/30 transition-all">
                         <span className="text-4xl font-black gold-gradient-text italic">30k+</span>
-                        <p className="text-[10px] font-bold text-white/60 uppercase tracking-[0.2em] mt-2">Active Portals</p>
+                        <p className="text-[10px] font-bold text-white/30 uppercase tracking-[0.2em]">Active Portals</p>
                      </div>
-                     <div className="p-6 rounded-3xl bg-black/50 backdrop-blur-md border border-white/10 hover:border-gold/50 transition-all translate-y-8 hover:bg-black/70">
+                     <div className="p-8 rounded-3xl bg-white/5 border border-white/10 space-y-3 translate-y-12 hover:border-gold/30 transition-all">
                         <span className="text-4xl font-black gold-gradient-text italic">5M+</span>
-                        <p className="text-[10px] font-bold text-white/60 uppercase tracking-[0.2em] mt-2">Aspirants</p>
+                        <p className="text-[10px] font-bold text-white/30 uppercase tracking-[0.2em]">Aspirants</p>
                      </div>
-                     <div className="p-6 rounded-3xl bg-black/50 backdrop-blur-md border border-white/10 hover:border-gold/50 transition-all hover:bg-black/70">
+                     <div className="p-8 rounded-3xl bg-white/5 border border-white/10 space-y-3 hover:border-gold/30 transition-all">
                         <span className="text-4xl font-black gold-gradient-text italic">200+</span>
-                        <p className="text-[10px] font-bold text-white/60 uppercase tracking-[0.2em] mt-2">Domains</p>
+                        <p className="text-[10px] font-bold text-white/30 uppercase tracking-[0.2em]">Domains</p>
                      </div>
-                     <div className="p-6 rounded-3xl bg-black/50 backdrop-blur-md border border-white/10 hover:border-gold/50 transition-all translate-y-8 hover:bg-black/70">
+                     <div className="p-8 rounded-3xl bg-white/5 border border-white/10 space-y-3 translate-y-12 hover:border-gold/30 transition-all">
                         <span className="text-4xl font-black gold-gradient-text italic">24/7</span>
-                        <p className="text-[10px] font-bold text-white/60 uppercase tracking-[0.2em] mt-2">Live Intell</p>
+                        <p className="text-[10px] font-bold text-white/30 uppercase tracking-[0.2em]">Live Intelligence</p>
                      </div>
                   </div>
                </div>
