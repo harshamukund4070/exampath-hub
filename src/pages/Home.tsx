@@ -36,7 +36,7 @@ const Home: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen text-white">
       {/* Breaking News Ticker */}
-      <div className="absolute top-[80px] left-0 right-0 z-40 bg-black/60 backdrop-blur-3xl border-y border-white/5 py-3 overflow-hidden">
+      <div className="absolute top-24 left-0 right-0 z-40 bg-black/60 backdrop-blur-3xl border-y border-white/5 py-3 overflow-hidden">
         <div className="flex whitespace-nowrap animate-ticker">
           {[
             "UPSC Civil Services 2024 Prelims Results Out!",
@@ -56,7 +56,7 @@ const Home: React.FC = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="relative pt-56 pb-32 lg:pt-80 lg:pb-48 overflow-hidden">
+      <section className="relative pt-40 pb-16 lg:pt-52 lg:pb-24 overflow-hidden">
         {/* Dynamic Background Elements */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[700px] bg-gold/5 blur-[180px] rounded-full -z-10 animate-pulse"></div>
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-gold/5 blur-[120px] rounded-full -z-10"></div>
@@ -143,10 +143,10 @@ const Home: React.FC = () => {
       </section>
 
       {/* Categories Section */}
-      <section className="py-32 bg-black-charcoal/40 backdrop-blur-md relative">
+      <section className="py-16 bg-black-charcoal/40 backdrop-blur-md relative">
         <div className="absolute inset-0 bg-gold/[0.02] -z-10"></div>
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-8">
             <div className="space-y-4">
               <span className="text-gold font-black text-xs uppercase tracking-[0.4em] block">Elite Disciplines</span>
               <h2 className="text-5xl font-black text-white">Global Categories</h2>
@@ -186,10 +186,10 @@ const Home: React.FC = () => {
       </section>
 
       {/* Featured Exams Section */}
-      <section className="py-32 relative overflow-hidden">
+      <section className="py-16 relative overflow-hidden">
         <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-gold/5 blur-[120px] rounded-full -z-10"></div>
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-8">
             <div className="space-y-4">
               <span className="text-gold font-black text-xs uppercase tracking-[0.4em] block">Prestigious Opportunities</span>
               <h2 className="text-5xl font-black text-white">Premier Examinations</h2>
@@ -225,7 +225,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-40 bg-black-deep/40 backdrop-blur-md relative overflow-hidden">
+      <section className="py-20 bg-black-deep/40 backdrop-blur-md relative overflow-hidden">
         <div className="absolute right-0 bottom-0 w-[600px] h-[600px] bg-gold/[0.03] blur-[150px] rounded-full -z-10"></div>
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-24 items-center">
