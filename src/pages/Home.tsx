@@ -62,7 +62,7 @@ const Home: React.FC = () => {
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-gold/5 blur-[120px] rounded-full -z-10"></div>
         
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center max-w-5xl mx-auto space-y-12">
+          <div className="text-center max-w-5xl mx-auto flex flex-col items-center gap-8">
              <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -73,23 +73,25 @@ const Home: React.FC = () => {
                 Join 5 Million+ Aspirants
              </motion.div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-6xl md:text-8xl font-black leading-[1.1] tracking-tighter font-display"
-            >
-              Master Your <br />
-              <span className="gold-gradient-text italic tracking-tighter">
-                Successful Path
-              </span>
-            </motion.h1>
+            <div className="animate-float-hero">
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.8 }}
+                className="text-6xl md:text-8xl font-black leading-[1.1] tracking-tighter font-['Poppins'] animate-color-glow py-4"
+              >
+                Master Your <br />
+                <span className="italic tracking-tighter">
+                  Successful Path
+                </span>
+              </motion.h1>
+            </div>
 
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="text-lg md:text-xl text-white/70 font-light max-w-3xl mx-auto leading-relaxed tracking-wide"
+              className="text-lg md:text-xl text-white/80 font-['Inter'] font-normal max-w-3xl mx-auto leading-relaxed tracking-normal"
             >
               The definitive intelligence repository for India's most prestigious competitive examinations. Precision data, real-time mandates, and elite preparation assets.
             </motion.p>
